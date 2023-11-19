@@ -2,10 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_pymongo import PyMongo
 from bson import ObjectId  # Import ObjectId from bson module
 from Classes import Etudiant
+import os
 
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/Etudiant'
 mongo = PyMongo(app)
+
+# Récupérer la valeur du port depuis la variable d'environnement ou utiliser 5000 par défaut
+port = int(os.environ.get('PORT', 5000))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -80,6 +84,6 @@ def delete(id):
     return redirect(url_for('results'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , port=port) 
 
     #cette fichier pour run toute le code et aussi la methode crud
