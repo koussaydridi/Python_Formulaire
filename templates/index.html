@@ -7,7 +7,18 @@
     <title>Student Information</title>
 </head>
 <body>
-    <h1>Student Information</h1>
+    <nav>
+        <h1>Student Information</h1>
+        <div class="buttons">
+            <div class="buttons">
+                <button onclick="window.location.href='{{ url_for('results') }}'">
+                    <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
+                        <path d="M310.3 181.6l363.2 338.4a42.6 42.6 0 0 1 0 60.2L310.3 842.4a42.6 42.6 0 0 1-60.2-60.2L573 512 250.1 241.8a42.6 42.6 0 0 1 0-60.2 42.6 42.6 0 0 1 60.2 0z"></path>
+                    </svg>
+                    <span>Result</span>
+                </button>        
+        </div>
+    </nav>
     <form method="post" action="/">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" class="input" required><br>
@@ -32,12 +43,5 @@
 
         <button type="submit">Create Etudiant</button>
     </form>
-
-    {% if etudiant %}
-        <h2>Etudiant Information:</h2>
-        <p>{{ etudiant }}</p>
-    {% elif error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
 </body>
 </html>
